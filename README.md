@@ -1,19 +1,16 @@
 # Home Lab Phase 2 (buckle in, this phase is a long one)
 
-
 ## Installation of Home Lab Network Devices
 
 Inspect input and output ports on all devices to plan for proper physical connections of network devices.
 In this section we will visually inspect the physical ports and cabling for each device.
 
-Inspection of firewall I/O ports.
-
-<p align="center">
+<p align="center">Inspection of firewall I/O ports
   <br/>
-  <img src="https://imgur.com/r7VcRNf.png" height="80%" width="80%" alt="Table1.1"/><br /><br />
+  <img src="https://imgur.com/r7VcRNf.png" height="80%" width="80%" alt=""/><br /><br />
 </p>
 
-<p align="center">
+<p align="center">Firewall I/O ports and VLAN tags
   <br/>
   <img src="https://imgur.com/gCf75F9.png" height="80%" width="80%" alt="Table1.1"/><br /><br />
 </p>
@@ -21,7 +18,7 @@ Inspection of firewall I/O ports.
 USB ports on the device can be used for a variety of purposes.
 The primary use for the USB ports is to install or reinstall the operating system on the device. Beyond that, there are numerous USB devices which can expand the base functionality of the hardware, including some supported by add-on packages. For example, UPS/Battery Backups, Cellular modems, GPS units, and storage devices. Though the operating system also supports wired and wireless network devices, these are not ideal and should be avoided [Netgate.com]. 
 
-<p align="center">
+<p align="center">Reverse view of firewall
   <br/>
   <img src="https://imgur.com/Ic7VQKJ.png" height="80%" width="80%" alt="Table1.1"/><br /><br />
 </p>
@@ -37,7 +34,7 @@ From left to right.
 
 <p>Inspection of managed switch I/O ports in the image below.</p>
 
-<p align="center">
+<p align="center">I/O ports of Netgear Managed Switch
   <br/>
   <img src="https://imgur.com/BBQHv6t.png" height="80%" width="80%" alt="Table1.1"/><br /><br />
 </p>
