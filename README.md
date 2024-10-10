@@ -3,10 +3,10 @@
 
 ## Installation of Home Lab Network Devices
 
-<p>Inspect input and output ports on all devices to plan for proper physical connections of network devices.
-In this section we will visually inspect the physical ports and cabling for each device.</p>
+Inspect input and output ports on all devices to plan for proper physical connections of network devices.
+In this section we will visually inspect the physical ports and cabling for each device.
 
-<p>Inspection of firewall I/O ports.</p>
+Inspection of firewall I/O ports.
 
 <p align="center">
   <br/>
@@ -18,9 +18,8 @@ In this section we will visually inspect the physical ports and cabling for each
   <img src="https://imgur.com/gCf75F9.png" height="80%" width="80%" alt="Table1.1"/><br /><br />
 </p>
 
-<p>USB ports on the device can be used for a variety of purposes.
+USB ports on the device can be used for a variety of purposes.
 The primary use for the USB ports is to install or reinstall the operating system on the device. Beyond that, there are numerous USB devices which can expand the base functionality of the hardware, including some supported by add-on packages. For example, UPS/Battery Backups, Cellular modems, GPS units, and storage devices. Though the operating system also supports wired and wireless network devices, these are not ideal and should be avoided [Netgate.com]. 
-</p>
 
 <p align="center">
   <br/>
@@ -50,7 +49,7 @@ From left to right.
   <img src="https://imgur.com/QsKOt86.png" height="80%" width="80%" alt="Table1.1"/><br /><br />
 </p>
 
-<p>Inspection of NUCbox PC  I/O ports</p>
+Inspection of NUCbox PC  I/O ports
 
 <p align="center">
   <br/>
@@ -77,7 +76,7 @@ Main ethernet trunk:
 - **ETH-7 exits port-8 on the switch.**
 - **ETH-7 enters the ethernet port on the PC.**
   
-<p>Network layout and flow of ethernet connections is shown in the image below.</p>
+Network layout and flow of ethernet connections is shown in the image below.
 
 <p align="center">
   <br/>
