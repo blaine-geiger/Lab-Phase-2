@@ -1,4 +1,4 @@
-# Home Lab Phase 2 (buckle in, this phase is a long one)
+# Lab Phase 2: Installation and configuration of devices
 
 ## Installation of Home Lab Network Devices
 
