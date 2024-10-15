@@ -41,7 +41,7 @@ Network layout and flow of ethernet connections is shown in the image below.
 
 <p align="center">
   <br/>
-  <img src="https://imgur.com/ck9dgGX.png" height="80%" width="80%" alt="Table1.1"/><br /><br />
+  <img src="https://imgur.com/H4sgfGe.png" height="80%" width="80%" alt="Table1.1"/><br /><br />
 </p>
 
 ## Firewall Configuration
