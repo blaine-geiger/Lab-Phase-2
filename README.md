@@ -44,27 +44,32 @@ Network layout and flow of ethernet connections is shown in the image below.
   <img src="https://imgur.com/ck9dgGX.png" height="80%" width="80%" alt="Table1.1"/><br /><br />
 </p>
 
-## Install and Configure Firewall
+## Firewall Configuration
 
 > **Note**: Some network devices may have the same default IP address. If we attempt to add a new device and its default IP matches a device that already exists on the network, an IP conflict will occur. If this is the case, communication between the devices cannot take place because they share the same IP address. Installation and configuration will not be possible.
 
 First, we will change the IP address of the existing router. Its default IP is the same as the firewall we are trying to install. If we don’t change either the firewall IP or the router IP, we will have the problem from the note above. We will also disable the DHCP server on the router because the firewall will become the DHCP server (if there is more than one DHCP server, this will also cause conflicts). Finally, placing the router into AP mode will disable NAT on the router, because the firewall will also handle this task from now on (double NAT is possible, but redundant, unnecessary, and can decrease network performance).
 
-Open a web browser while connected to the currently existing Wi-Fi signal:
-1. Type `192.168.1.1` into the address bar and press Enter.
-2. This takes you to the router’s configuration page.
-3. Locate the LAN settings.
-4. Select the LAN IP.
-5. Change the IP address to `192.168.1.2`:
-6. Click Apply to save the setting.
-7. Locate LAN settings
-8. Select the DHCP Server
-9. Under DHCP Server, set Status to Disabled.
-10. Locate router operation modes
-11. Select Access Point (AP) mode.
+### Change Router IP
+1. Open a web browser while connected to the currently existing Wi-Fi signal:
+2. Type `192.168.1.1` into the address bar and press Enter.
+3. This takes you to the router’s configuration page.
+4. Locate the LAN settings.
+5. Select the LAN IP.
+6. Change the IP address to `192.168.1.2`:
+
+### Disable Router's DHCP Server
+1. Locate LAN settings
+2. Select the DHCP Server
+3. Under DHCP Server, set Status to Disabled.
+
+### Change Router to AP mode
+5. Locate router operation modes
+6. Select Access Point (AP) mode.
 
 > We have changed the IP of the router; its configuration page can now be accessed from the new example address of `192.168.1.2`. We disabled DHCP services. We placed the router into AP mode.
 
+### Access Firewall Configuration
 1. Power down the existing router and modem.
 2. Disconnect ethernet from the modem.
 3. Do not connect the power source to the firewall at this time.
@@ -74,17 +79,19 @@ Open a web browser while connected to the currently existing Wi-Fi signal:
 7. On the laptop, open a web browser and enter the default IP of the firewall and will take us to the web GUI where we can configure the device.
 8. Use the default credentials to enter GUI:
 
-
-- Locate DNS server:
-1. Hostname: change or leave default
-2. Domain: change or leave default
-3. DNS Servers: for example Google and Cloudfare:
+### Set DNS Server
+1. Locate DNS server:
+2. Hostname: change or leave default
+3. Domain: change or leave default
+4. DNS Servers: for example Google and Cloudfare:
    - DNS Server 1: `8.8.8.8`.
    - DNS Server 2: `1.1.1.1`.
 
+### Configure WAN
 - WAN Interface page (public IP from ISP and modem):
   - Select Type: DHCP.
 
+### Assign and Configure LAN
 - LAN IP Address and Subnet Mask:
   - The firewall is the first device on the network:
     - Example `192.168.1.1`:
@@ -92,6 +99,7 @@ Open a web browser while connected to the currently existing Wi-Fi signal:
 
 Next, we configure the OPT (optional) port of the firewall. This will serve as the lab segment of our network. Using this port provides physical hardware segmentation of our lab network. This is more secure than basic subnet addressing or even VLAN segmentation. However, we will also use subnet addressing. Use of the OPT port and subnet addressing provides both physical and logical segmentation of the lab network. This isolation is important to keep lab testing secure and separate from the main home LAN
 
+### Assign OPT Interface
 - Navigate to **Interfaces**.
 1. Click the **Assignments** tab.
 2. Select the **OPT interface** tab.
@@ -102,24 +110,27 @@ Next, we configure the OPT (optional) port of the firewall. This will serve as t
    - This sets our lab subnet
      - This logically separates it from the home LAN subnet
 
+### OPT DHCP setup using examples
 - Click the **Services** tab:
 1. Click the **OPT interface** tab.
 2. Click the **DHCP server** tab:
     - Set pool for ~50 devices (example: `192.168.2.50 – 192.168.2.100`).
     - Cannot overlap with other static IPs
 
+### LAN DHCP setup using examples
 - Click Services tab:
 1. Click LAN interface tab.
 2. Click DHCP server tab:
     - Set pool for ~50 devices (example: `192.168.1.50 – 192.168.1.100`).
     - Cannot overlap with other static IPs
 
+### Enable NAT for OPT (Lab) Interface
 - Locate Services:
 1. Click NAT.
 2. Click OPT interface tab.
 3. Enable Outbound NAT for the new OPT interface (this is applied to the LAN interface by default, so we don’t need to activate NAT for the LAN interface).
 
-## Firewall Configuration
+## Firewall Rules
 Finally, we must configure manual firewall rules for the OPT interface we have enabled, or communication will not take place. Firewall rules are automatically applied to the LAN interface by default, so we only need to do this for the OPT interface.
 
 ### Generic Firewall Rules for Interfaces:
@@ -130,16 +141,17 @@ Finally, we must configure manual firewall rules for the OPT interface we have e
 
 - OPT Interface: "Setup allows necessary services for the lab environment, including DNS, HTTP, and DHCP traffic, while blocking any unsolicited inbound requests."
 
-- Example Rule for OPT Interface: "To facilitate DNS resolution within the lab network, an allow rule is configured as follows:
+- Example Rule for OPT Interface: "For DNS resolution within the lab network, an allow rule is configured as follows:
 Action: Allow
 Protocol: TCP/UDP
 Source: 192.168.2.0/24 (lab subnet)
 Destination: Any
 Port: 53 (DNS)
-Description: Allow DNS traffic from the lab subnet to ensure devices can resolve domain names effectively."
+Description: Allow DNS traffic from the lab subnet to ensure devices can resolve domain names effectively.
 
 ## Install and Configure Managed Switch:
 
+### Access GUI and change password
 1. Locate web GUI for managed switch at default address
 2. Enter the default login credentials that are printed on the label found on the bottom of the switch.
    - Locate **‘Admin Settings’** or similar  
@@ -148,6 +160,7 @@ Description: Allow DNS traffic from the lab subnet to ensure devices can resolve
     - The switch’s GUI page will refresh.
     - Enter the new login credentials we just created.
 
+### Disable DHCP on managed switch
 4. Disable the DHCP service (this allows us to set a static IP for the switch).
 5. Set a static IP address on the `192.168.2.0 /24` subnet:
      - Avoid using an IP address that is in the DHCP range we set earlier on the firewall (we used the example of `192.168.2.50 – 192.168.2.100`).
@@ -155,7 +168,6 @@ Description: Allow DNS traffic from the lab subnet to ensure devices can resolve
    - Set the gateway to the firewall’s OPT port IP address we assigned earlier.
 
 ## Installation of Personal Computer
-
 1. This step can take place after all devices are connected and the PC is powered on for the first boot up.
 2. Connect all devices according to the ethernet cabling descriptions provided in the earlier section:
    - All devices should be unplugged as the ethernet connections are made.
