@@ -83,9 +83,10 @@ First, we will change the IP address of the existing router. Its default IP is t
 1. Locate DNS server:
 2. Hostname: change or leave default
 3. Domain: change or leave default
-4. DNS Servers: for example you can use Google and Cloudfare:
+4. DNS Servers: There are many public DNS servers to choose from, some are more popular than others.
+  - We can use Google for our example. 
    - DNS Server 1: `8.8.8.8`.
-   - DNS Server 2: `1.1.1.1`.
+   - DNS Server 2: `8.8.4.4`.
 
 ### Configure WAN
 - WAN Interface page (public IP from ISP and modem):
