@@ -7,10 +7,10 @@ Private IP addresses are not routable on the public internet and can be used wit
 - 192.168.0.0 to 192.168.255.255
   
 #### For the sake of clarity we will use the following examples:
-  - 192.168.1.0 /24 for subnet 1
-  - 192.168.2.0 /24 for subnet 2
+  - 10.1.1.0 /24 for subnet 1
+  - 10.1.2.0 /24 for subnet 2
 
-> **Note:** All device IP addressing is used as an example and does not reflect the actual addressing scheme used in my network setup. These are given as placeholder IP addresses for
+> **Note:** All device IP addresses are used as an example and does not reflect the actual addressing scheme used in my network setup. These are given as placeholder IP addresses for
 > clarity to the reader.
 
 ## Summary of Sections
@@ -52,11 +52,11 @@ First, we will change the IP address of the existing router. Its default IP is t
 
 ### Change Router IP
 1. Open a web browser while connected to the currently existing Wi-Fi signal:
-2. Type `192.168.1.1` into the address bar and press Enter.
+2. Type `10.1.1.1` into the address bar and press Enter.
 3. This takes you to the router’s configuration page.
 4. Locate the LAN settings.
 5. Select the LAN IP.
-6. Change the IP address to `192.168.1.2`:
+6. Change the IP address to `10.1.1.2`:
 
 ### Disable Router's DHCP Server
 1. Locate LAN settings
@@ -67,7 +67,7 @@ First, we will change the IP address of the existing router. Its default IP is t
 5. Locate router operation modes
 6. Select Access Point (AP) mode.
 
-> We have changed the IP of the router; its configuration page can now be accessed from the new example address of `192.168.1.2`. We disabled DHCP services. We placed the router into AP mode.
+> We have changed the IP of the router; its configuration page can now be accessed from the new example address of `10.1.1.2`. We disabled DHCP services. We placed the router into AP mode.
 
 ### Access Firewall Configuration
 1. Power down the existing router and modem.
@@ -83,7 +83,7 @@ First, we will change the IP address of the existing router. Its default IP is t
 1. Locate DNS server:
 2. Hostname: change or leave default
 3. Domain: change or leave default
-4. DNS Servers: for example Google and Cloudfare:
+4. DNS Servers: for example you can use Google and Cloudfare:
    - DNS Server 1: `8.8.8.8`.
    - DNS Server 2: `1.1.1.1`.
 
@@ -94,7 +94,7 @@ First, we will change the IP address of the existing router. Its default IP is t
 ### Assign and Configure LAN
 - LAN IP Address and Subnet Mask:
   - The firewall is the first device on the network:
-    - Example `192.168.1.1`:
+    - Example `10.1.1.1`:
       - cannot be the same as the IP of the router we changed earlier.
 
 Next, we configure the OPT (optional) port of the firewall. This will serve as the lab segment of our network. Using this port provides physical hardware segmentation of our lab network. This is more secure than basic subnet addressing or even VLAN segmentation. However, we will also use subnet addressing. Use of the OPT port and subnet addressing provides both physical and logical segmentation of the lab network. This isolation is important to keep lab testing secure and separate from the main home LAN
@@ -106,7 +106,7 @@ Next, we configure the OPT (optional) port of the firewall. This will serve as t
 3. Click **Add**.
 4. Make sure the enable box is checked.
 5. IP type: **Static**.
-6. Set static IP `192.168.2.1` /24:
+6. Set static IP `10.1.2.1` /24:
    - This sets our lab subnet
      - This logically separates it from the home LAN subnet
 
@@ -114,14 +114,14 @@ Next, we configure the OPT (optional) port of the firewall. This will serve as t
 - Click the **Services** tab:
 1. Click the **OPT interface** tab.
 2. Click the **DHCP server** tab:
-    - Set pool for ~50 devices (example: `192.168.2.50 – 192.168.2.100`).
+    - Set pool for ~50 devices (example: `10.1.2.50 – 10.1.2.100`).
     - Cannot overlap with other static IPs
 
 ### LAN DHCP setup using examples
 - Click Services tab:
 1. Click LAN interface tab.
 2. Click DHCP server tab:
-    - Set pool for ~50 devices (example: `192.168.1.50 – 192.168.1.100`).
+    - Set pool for ~50 devices (example: `10.1.1.50 – 10.1.1.100`).
     - Cannot overlap with other static IPs
 
 ### Enable NAT for OPT (Lab) Interface
@@ -144,7 +144,7 @@ Finally, we must configure manual firewall rules for the OPT interface we have e
 - Example Rule for OPT Interface: "For DNS resolution within the lab network, an allow rule is configured as follows:
 Action: Allow
 Protocol: TCP/UDP
-Source: 192.168.2.0/24 (lab subnet)
+Source: 10.1.2.0/24 (lab subnet)
 Destination: Any
 Port: 53 (DNS)
 Description: Allow DNS traffic from the lab subnet to ensure devices can resolve domain names effectively.
@@ -162,10 +162,10 @@ Description: Allow DNS traffic from the lab subnet to ensure devices can resolve
 
 ### Disable DHCP on managed switch
 4. Disable the DHCP service (this allows us to set a static IP for the switch).
-5. Set a static IP address on the `192.168.2.0 /24` subnet:
-     - Avoid using an IP address that is in the DHCP range we set earlier on the firewall (we used the example of `192.168.2.50 – 192.168.2.100`).
-     - Also do not use the IP of the firewall’s OPT port we assigned earlier.
-   - Set the gateway to the firewall’s OPT port IP address we assigned earlier.
+5. Set a static IP address on the `10.1.2.0 /24` subnet:
+     - Avoid using an IP address that is in the DHCP range we set earlier on the firewall (we used the example of `10.1.2.50 – 10.1.2.100`).
+     - Also do not use the IP of the firewall’s example OPT port we assigned earlier which was `10.1.2.1`
+   - Set the gateway to the firewall’s OPT port IP address we assigned earlier `10.1.2.1`.
 
 ## Installation of Personal Computer
 1. This step can take place after all devices are connected and the PC is powered on for the first boot up.
@@ -186,7 +186,7 @@ Description: Allow DNS traffic from the lab subnet to ensure devices can resolve
 ## Diagram of example subnets, domains, devices, IPs, gateways, subnet masks and DHCP pools. 
 <p align="center">
   <br/>
-  <img src=".png" height="80%" width="80%" alt="Table1.1"/><br /><br />
+  <img src="https://imgur.com/ZRBmXI0.png" height="80%" width="80%" alt="Table1.1"/><br /><br />
 </p>
 <!--
  ```diff
