@@ -10,7 +10,7 @@ Private IP addresses are not routable on the public internet and can be used wit
   - 10.1.1.0 /24 for subnet 1
   - 10.1.2.0 /24 for subnet 2
 
-> **Note:** All device IP addresses are used as an example and does not reflect the actual addressing scheme used in my network setup. These are given as placeholder IP addresses for
+> **Note:** All device IP addresses are examples and do not reflect the actual addressing scheme in my network setup. They are given as placeholder IP addresses for
 > clarity to the reader.
 
 ## Summary of Sections
