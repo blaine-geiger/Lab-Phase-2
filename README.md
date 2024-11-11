@@ -41,7 +41,7 @@ Network layout and flow of ethernet connections is shown in the image below.
 
 <p align="center">
   <br/>
-  <img src="https://imgur.com/H4sgfGe.png" height="80%" width="80%" alt="Table1.1"/><br /><br />
+  <img src="https://i.imgur.com/H4sgfGe.png" height="80%" width="80%" alt="Table1.1"/><br /><br />
 </p>
 
 ## Firewall Configuration
@@ -187,7 +187,7 @@ Description: Allow DNS traffic from the lab subnet to ensure devices can resolve
 ## Diagram of example subnets, domains, devices, IPs, gateways, subnet masks and DHCP pools. 
 <p align="center">
   <br/>
-  <img src="https://imgur.com/ZRBmXI0.png" height="80%" width="80%" alt="Table1.1"/><br /><br />
+  <img src="https://i.imgur.com/ZRBmXI0.png" height="80%" width="80%" alt="Table1.1"/><br /><br />
 </p>
 <!--
  ```diff
