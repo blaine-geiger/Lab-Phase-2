@@ -39,10 +39,11 @@ Before we start the next section and momentarily lose a reliable internet connec
 
 Network layout and flow of ethernet connections is shown in the image below.
 
-<p align="center">
-  <br/>
-  <img src="https://i.imgur.com/H4sgfGe.png" height="80%" width="80%" alt="Table1.1"/><br /><br />
-</p>
+<div align="center">
+  
+  ![Description of Image](https://raw.githubusercontent.com/blaine-geiger/Lab-Phase-2/1cce16b3df4c284a2d8a337a620931ec27834d24/network_final.png)
+  
+</div>
 
 ## Firewall Configuration
 
