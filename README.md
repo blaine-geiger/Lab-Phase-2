@@ -186,10 +186,11 @@ Description: Allow DNS traffic from the lab subnet to ensure devices can resolve
 8. Now we see the OS home screen and our process is complete.
 
 ## Diagram of example subnets, domains, devices, IPs, gateways, subnet masks and DHCP pools. 
-<p align="center">
-  <br/>
-  <img src="https://i.imgur.com/ZRBmXI0.png" height="80%" width="80%" alt="Table1.1"/><br /><br />
-</p>
+<div align="center">
+  
+  ![Description of Image](https://raw.githubusercontent.com/blaine-geiger/Lab-Phase-2/4f191471358cb62c56142f1fbc320177812c2b17/example_ip_scheme.png)
+  
+</div>
 <!--
  ```diff
 - text in red
